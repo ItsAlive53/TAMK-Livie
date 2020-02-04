@@ -232,7 +232,7 @@ int main(int argc, char** argv) {
                                 if ((opts & OPTS_FILE_NAME_BIT) || (fileCount > 1 && !(opts & OPTS_NO_FILE_NAME_BIT))) {
                                     printf("%s", argv[i]);
                                     if (opts & OPTS_NULL_AFTER_FILE_BIT) {
-                                        printf("\0");
+                                        printf("\\0");
                                     } else {
                                         printf(":");
                                     }
@@ -274,7 +274,7 @@ int main(int argc, char** argv) {
                         if ((opts & OPTS_FILE_NAME_BIT) || (fileCount > 1 && !(opts & OPTS_NO_FILE_NAME_BIT))) {
                             printf("(standard input)");
                             if (opts & OPTS_NULL_AFTER_FILE_BIT) {
-                                printf("\0");
+                                printf("\\0");
                             } else {
                                 printf(":");
                             }
