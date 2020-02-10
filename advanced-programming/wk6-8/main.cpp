@@ -1,8 +1,12 @@
 #include <stdio.h>
 
-int main() {
-    printf("Not yet implemented\n");
-    fflush(stdin);
+#include "lotto.h"
 
+int main() {
+    LottoMachine lm;
+
+    lm.printDebugString();
+
+    fflush(NULL);
     return 0;
 }
