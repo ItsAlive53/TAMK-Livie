@@ -2,9 +2,11 @@
 *.ppt
 *.doc
 *.docx
+*.docx\#
 *.txt
 *.pdf
 
 # General name for compiled binaries
 */teht[1-9]
+*/teht
 
