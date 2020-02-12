@@ -13,6 +13,8 @@ int main() {
     printf("Test row extra: %i\n", testRow.numExtra);
     printf("Test row plus: %i\n", testRow.numPlus);
 
+    lm.fReadUserRow(stdin);
+
     fflush(NULL);
     return 0;
 }
