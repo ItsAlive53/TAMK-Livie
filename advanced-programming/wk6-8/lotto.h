@@ -9,15 +9,34 @@ enum class LottoResult: uint8_t {
     // TODO: Add other results
 };
 
+struct LottoRow {
+    uint8_t num1;
+    uint8_t num2;
+    uint8_t num3;
+    uint8_t num4;
+    uint8_t num5;
+    uint8_t num6;
+    uint8_t num7;
+
+    uint8_t numExtra;
+
+    uint8_t numPlus;
+};
+
 class LottoMachine {
 
 private:
-    int* correctRow;
+    LottoRow correctRow;
+
+    LottoRow* userRows;
     LottoResult result;
 
 public:
     LottoMachine();
     ~LottoMachine();
+
+    void fReadUserRow(FILE*);
+    LottoRow getUserRow(int = 0);
 
     void printDebugString();
 
