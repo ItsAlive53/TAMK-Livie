@@ -29,7 +29,10 @@ private:
     LottoRow correctRow;
 
     LottoRow* userRows;
+    int userRowCount;
     LottoResult result;
+
+    int addUserRow(LottoRow);
 
 public:
     LottoMachine();

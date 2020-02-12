@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "lotto.h"
 
 LottoMachine::LottoMachine() {
     printf("LottoMachine constructor called\n");
-    result = LottoResult::NONE;
-    correctRow = {1, 2, 3, 4, 5, 6, 7};
-    userRows = new LottoRow[2] {
+    this->result = LottoResult::NONE;
+    this->correctRow = {1, 2, 3, 4, 5, 6, 7};
+    this->userRows = new LottoRow[2] {
         {
             1, 2, 3, 4, 5, 6, 7, 10, 21
         },
@@ -14,11 +15,12 @@ LottoMachine::LottoMachine() {
             2, 4, 5, 7, 8, 10, 11, 21, 31
         }
     };
+    this->userRowCount = 2;
 }
 
 LottoMachine::~LottoMachine() {
     printf("LottoMachine destructor called\n");
-    delete[] userRows;
+    delete[] this->userRows;
 }
 
 void LottoMachine::printDebugString() {
@@ -40,17 +42,47 @@ void LottoMachine::printDebugString() {
     fflush(stdin);
 }
 
+int LottoMachine::addUserRow(LottoRow row) {
+    if (userRowCount > 0) {
+        LottoRow* rowCpy = new LottoRow[userRowCount];
+        if (!rowCpy) {
+            throw "Failed allocating space for user rows copy\n";
+        }
+        for (int i = 0; i < userRowCount; i++) {
+            rowCpy[i] = userRows[i];
+        }
+        delete[] userRows;
+
+        userRows = new LottoRow[userRowCount + 1];
+        if (!userRows) {
+            throw "Failed allocating space for user rows\n";
+        }
+        for (int i = 0; i < userRowCount; i++) {
+            userRows[i] = rowCpy[i];
+        }
+        delete[] rowCpy;
+
+        userRows[userRowCount] = row;
+        userRowCount++;
+    }
+    return 0;
+}
+
 void LottoMachine::fReadUserRow(FILE* fstr) {
     char in[128];
 
     printf("Input your numbers, separated by spaces: ");
 
-    while (fgets(in, 128, fstr) == NULL) {
-        fprintf(stderr, "No input received, try again: ");
+    while (1) {
+        if (fgets(in, 128, fstr) == NULL) {
+            fprintf(stderr, "No input received, try again: ");
+        } else if (*in == '\n') {
+            fprintf(stderr, "Invalid input, try again: ");
+        } else break;
     }
 
-    printf("Your input: %s\n", in);
-    // TODO: input handling
+    printf("Your input: %s\nLength: %i\n", in, strlen(in));
+    // TODO: proper input handling
 }
 
 LottoRow LottoMachine::getUserRow(int index) {
