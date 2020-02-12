@@ -1,5 +1,5 @@
-#ifndef __MYLIB_INCLUDED__
-#define __MYLIB_INCLUDED__
+#ifndef __INCLUDED_MYLIB_H__
+#define __INCLUDED_MYLIB_H__
 
 // Fetch a string from std::istream
 std::string getString(std::istream& istream, std::string promptMessage);
@@ -30,4 +30,4 @@ void printChar(char c, uint16_t amount);
 // Print n amount of character c, with or without trailing newline
 void printChar(char c, uint16_t amount, bool newLine);
 
-#endif // #ifndef __MYLIB_INCLUDED__
+#endif // #ifndef __INCLUDED_MYLIB_H__
