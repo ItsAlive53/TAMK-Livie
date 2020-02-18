@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 #include "lotto.h"
 
@@ -66,23 +65,6 @@ int LottoMachine::addUserRow(LottoRow row) {
         userRowCount++;
     }
     return 0;
-}
-
-void LottoMachine::fReadUserRow(FILE* fstr) {
-    char in[128];
-
-    printf("Input your numbers, separated by spaces: ");
-
-    while (1) {
-        if (fgets(in, 128, fstr) == NULL) {
-            fprintf(stderr, "No input received, try again: ");
-        } else if (*in == '\n') {
-            fprintf(stderr, "Invalid input, try again: ");
-        } else break;
-    }
-
-    printf("Your input: %s\nLength: %i\n", in, strlen(in));
-    // TODO: proper input handling
 }
 
 LottoRow LottoMachine::getUserRow(int index) {

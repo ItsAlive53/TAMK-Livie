@@ -38,7 +38,6 @@ public:
     LottoMachine();
     ~LottoMachine();
 
-    void fReadUserRow(FILE*);
     LottoRow getUserRow(int = 0);
 
     void printDebugString();

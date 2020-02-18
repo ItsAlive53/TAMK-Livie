@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 
+#include "input.h"
 #include "lotto.h"
 
 int main() {
@@ -13,7 +15,13 @@ int main() {
     printf("Test row extra: %i\n", testRow.numExtra);
     printf("Test row plus: %i\n", testRow.numPlus);
 
-    lm.fReadUserRow(stdin);
+    char a[128];
+    printf("Input something: ");
+    if (fGetInput(stdin, a, 128) == 0) {
+        printf("Input: %s\nLength: %i\n", a, strlen(a));
+    } else {
+        fprintf(stderr, "Error in input\n");
+    }
 
     fflush(NULL);
     return 0;
