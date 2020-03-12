@@ -1,5 +1,4 @@
-#ifndef __PERSON_H_INCLUDED__
-#define __PERSON_H_INCLUDED__
+#pragma once
 
 class Person {
 public:
@@ -25,5 +24,3 @@ private:
 
 
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef __DATE_H_INCLUDED__
-#define __DATE_H_INCLUDED__
+#pragma once
 
 class Date {
 public:
@@ -33,5 +32,3 @@ private:
 
 
 };
-
-#endif
