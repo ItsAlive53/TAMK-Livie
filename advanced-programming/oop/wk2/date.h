@@ -3,7 +3,12 @@
 
 class Date {
 public:
+    Date();
+    Date(int year);
+    Date(int year, int month);
     Date(int year, int month, int day);
+
+    ~Date();
 
     void setYear(int year);
     void setMonth(int month);
@@ -23,6 +28,8 @@ private:
     int year;
     int month;
     int day;
+
+    void init(int year, int month, int day);
 
 
 };

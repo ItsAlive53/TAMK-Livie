@@ -4,10 +4,32 @@
 #include "mylib.h"
 #include "date.h"
 
+Date::Date() {
+    std::cout << "Ctor-> Date()\n";
+
+    this->init(0, 1, 1);
+}
+
+Date::Date(int year) {
+    std::cout << "Ctor-> Date(int)\n";
+
+    this->init(year, 1, 1);
+}
+
+Date::Date(int year, int month) {
+    std::cout << "Ctor-> Date(int, int)\n";
+
+    this->init(year, month, 1);
+}
+
 Date::Date(int year, int month, int day) {
-    this->year = year;
-    this->month = month;
-    this->day = day;
+    std::cout << "Ctor-> Date(int, int, int)\n";
+
+    this->init(year, month, day);
+}
+
+Date::~Date() {
+    std::cout << "Dtor-> ~Date()-> (" << this->year << "-" << this->month << "-" << this->day << ")\n";
 }
 
 void Date::setYear(int year) {
@@ -135,4 +157,10 @@ void Date::incrementDay() {
         this->month = 1;
         this->year++;
     }
+}
+
+void Date::init(int year, int month, int day) {
+    this->year = year;
+    this->month = month;
+    this->day = day;
 }
