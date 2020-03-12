@@ -25,5 +25,8 @@ private:
 
     void init(int numerator, int denominator);
 
+    // Greatest Common Denominator
+    int findGCD(int x, int y);
+
 
 };

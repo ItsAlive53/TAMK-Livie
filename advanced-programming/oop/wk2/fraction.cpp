@@ -47,4 +47,27 @@ void Fraction::print() {
 }
 
 void Fraction::reduce() {
+    int gcd = this->findGCD(this->numerator, this->denominator);
+
+    this->numerator /= gcd;
+    this->denominator /= gcd;
+}
+
+void Fraction::init(int numerator, int denominator) {
+    this->numerator = numerator;
+    this->denominator = denominator;
+}
+
+/**
+ * 
+ * function gcd(a, b)
+ *     if b = 0
+ *         return a
+ *     else
+ *         return gcd(b, a mod b)
+ * 
+ * */
+int Fraction::findGCD(int x, int y) {
+    if (!y) return x;
+    else return this->findGCD(y, x % y);
 }
